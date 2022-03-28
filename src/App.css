@@ -45,6 +45,9 @@ main {
   background-color: var(--blue);
   position: relative;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .box {
