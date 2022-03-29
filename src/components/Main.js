@@ -1,5 +1,7 @@
 import React from "react";
-import Circle from "./Circle.js";
+import Circle from "./UI_Components/Circle.js";
+import Button from "./UI_Components/Button.js";
+import classes from "./UI_Components/Circle.module.css";
 
 class Main extends React.Component {
   state = { counter: 0 };
@@ -14,34 +16,41 @@ class Main extends React.Component {
     this.setState({ counter: (this.state.counter = 0) });
   };
   removeHandler1 = () => {
-    this.setState({ counter: this.state.counter - 1 });
+    this.state.counter > 0
+      ? this.setState({ counter: this.state.counter - 1 })
+      : this.setState({ counter: 0 });
   };
   removeHandler5 = () => {
-    this.setState({ counter: this.state.counter - 5 });
+    this.state.counter > 5
+      ? this.setState({ counter: this.state.counter - 5 })
+      : this.setState({ counter: 0 });
   };
 
   render() {
+    let active = true;
+
+    if (this.state.counter % 2 !== 0) {
+      active = !active;
+    }
+
     return (
       <main>
         <section className="circleContainer">
-          <Circle count={this.state.counter} />
+          <Circle
+            color={active ? classes.circle : `${classes.circle} ${classes.odd}`}
+            count={this.state.counter}
+          />
         </section>
         <section className="boxContainer">
-          <button onClick={this.addHandler5} className="box">
-            Add five
-          </button>
-          <button onClick={this.addHandler1} className="box">
-            Add one
-          </button>
-          <button onClick={this.addHandler0} className="box">
-            Reset
-          </button>
-          <button onClick={this.removeHandler1} className="box">
-            Remove one
-          </button>
-          <button onClick={this.removeHandler5} className="box">
-            Remove five
-          </button>
+          <Button styletype="button" click={this.addHandler5}>
+            Add 5
+          </Button>
+          <Button click={this.addHandler1}>Add 1</Button>
+          <Button click={this.addHandler0}>Reset</Button>
+          <Button click={this.removeHandler1}>Remove 1</Button>
+          <Button type="submit" click={this.removeHandler5}>
+            Remove 5
+          </Button>
         </section>
       </main>
     );

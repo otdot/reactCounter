@@ -1,0 +1,21 @@
+.btn {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  height: 3rem;
+  width: 12rem;
+  border-radius: 0.5rem;
+  border: 0;
+}
+
+.btn:hover {
+  transform: rotate(1deg);
+}
+
+.button {
+  color: black;
+  box-shadow: 2px 2px 5px black;
+  background-color: aquamarine;
+}
